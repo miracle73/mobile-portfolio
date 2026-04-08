@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Miracle Chukwuma — Mobile Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #fafaf8;
+  --white: #ffffff;
+  --ink: #111110;
+  --ink2: #3a3a38;
+  --muted: #888884;
+  --border: #e4e4e0;
+  --border2: #d0d0cb;
+  --tag-bg: #f0f0ec;
+  --green: #2d6a4f;
+  --green-bg: #eaf3ee;
+  --font-d: 'Bricolage Grotesque', sans-serif;
+  --font-b: 'Inter', sans-serif;
+  --max: 1100px;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-b);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2.5rem; height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { font-family: var(--font-d); font-weight: 700; font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a { color: var(--muted); font-size: 0.85rem; text-decoration: none; transition: color 0.15s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-cta { background: var(--ink); color: #fff; padding: 0.48rem 1.2rem; border-radius: 6px; font-size: 0.82rem; font-weight: 500; text-decoration: none; transition: opacity 0.15s; }
+.nav-cta:hover { opacity: 0.75; }
+
+/* LAYOUT */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+
+/* HERO */
+.hero { max-width: var(--max); margin: 0 auto; padding: 9rem 2.5rem 6rem; border-bottom: 1px solid var(--border); }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-size: 0.78rem; font-weight: 500; color: var(--green);
+  background: var(--green-bg); padding: 0.28rem 0.85rem;
+  border-radius: 99px; margin-bottom: 2.2rem; letter-spacing: 0.01em;
+}
+.eyebrow::before { content:''; width:7px; height:7px; background:var(--green); border-radius:50%; animation: blink 2s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+.hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 800; line-height: 1.06; letter-spacing: -0.03em;
+  color: var(--ink); max-width: 720px; margin-bottom: 1.5rem;
+}
+.hero-p { font-size: 1rem; color: var(--muted); max-width: 460px; line-height: 1.8; font-weight: 300; margin-bottom: 2.2rem; }
+.hero-btns { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.btn-solid { background: var(--ink); color: #fff; padding: 0.75rem 1.75rem; border-radius: 8px; font-weight: 500; font-size: 0.87rem; text-decoration: none; transition: opacity .15s; }
+.btn-solid:hover { opacity: 0.78; }
+.btn-ghost { border: 1px solid var(--border2); color: var(--ink2); padding: 0.75rem 1.75rem; border-radius: 8px; font-size: 0.87rem; text-decoration: none; transition: border-color .15s, background .15s; }
+.btn-ghost:hover { border-color: var(--ink); background: var(--tag-bg); }
+
+.hero-stats { display: flex; gap: 3rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); }
+.s-val { font-family: var(--font-d); font-size: 2rem; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; }
+.s-lbl { font-size: 0.77rem; color: var(--muted); margin-top: 0.15rem; }
+
+/* SECTIONS */
+.sec { padding: 5.5rem 0; border-bottom: 1px solid var(--border); }
+.sec-lbl { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.7rem; }
+.sec-h { font-family: var(--font-d); font-size: clamp(1.7rem,3vw,2.4rem); font-weight: 800; letter-spacing: -0.025em; color: var(--ink); line-height: 1.1; margin-bottom: 0.75rem; }
+.sec-p { color: var(--muted); max-width: 480px; font-size: 0.9rem; line-height: 1.7; }
+.sec-head { margin-bottom: 3.5rem; }
+
+/* SERVICES */
+.svc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.svc { background: var(--white); padding: 2.2rem 2.4rem; transition: background .15s; }
+.svc:hover { background: var(--tag-bg); }
+.svc-n { font-size: 0.7rem; font-weight: 600; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 0.9rem; }
+.svc h3 { font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.55rem; letter-spacing: -0.01em; }
+.svc p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+/* PROCESS */
+.proc-list { display: flex; flex-direction: column; }
+.proc { display: grid; grid-template-columns: 52px 1fr 24px; align-items: start; gap: 2rem; padding: 2.2rem 0; border-bottom: 1px solid var(--border); }
+.proc:last-child { border-bottom: none; }
+.proc-n { font-family: var(--font-d); font-size: 0.78rem; font-weight: 700; color: var(--border2); padding-top: 0.1rem; letter-spacing: 0.04em; transition: color .15s; }
+.proc:hover .proc-n { color: var(--ink); }
+.proc-body h3 { font-family: var(--font-d); font-size: 1.05rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 0.35rem; }
+.proc-body p { font-size: 0.86rem; color: var(--muted); line-height: 1.65; max-width: 500px; }
+.proc-arr { color: var(--border2); font-size: 1rem; padding-top: 0.15rem; transition: color .15s; }
+.proc:hover .proc-arr { color: var(--ink); }
+
+/* PROJECTS */
+.proj-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+.proj-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, box-shadow .2s; }
+.proj-card:hover { border-color: var(--border2); box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.proj-top { padding: 1.8rem 2rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.proj-ico { width: 46px; height: 46px; border-radius: 10px; border: 1px solid var(--border); background: var(--tag-bg); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.proj-badge { font-size: 0.69rem; color: var(--muted); border: 1px solid var(--border); padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 500; white-space: nowrap; }
+.proj-body { padding: 1.5rem 2rem; flex: 1; }
+.proj-body h3 { font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 0.55rem; }
+.proj-body p { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+.proj-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+.ptag { font-size: 0.7rem; font-weight: 500; background: var(--tag-bg); color: var(--ink2); padding: 0.2rem 0.6rem; border-radius: 4px; }
+.proj-foot { padding: 1.1rem 2rem; border-top: 1px solid var(--border); }
+.proj-a { font-size: 0.8rem; font-weight: 500; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; transition: gap .15s; }
+.proj-a:hover { gap: 0.55rem; }
+
+/* SKILLS */
+.sk-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.sk-col h3 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.4rem; }
+.sk-row { display: flex; align-items: center; justify-content: space-between; padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
+.sk-row:first-of-type { border-top: 1px solid var(--border); }
+.sk-name { font-size: 0.87rem; color: var(--ink); }
+.sk-lvl { font-size: 0.75rem; color: var(--muted); font-weight: 500; }
+.chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.chip { font-size: 0.78rem; color: var(--ink2); background: var(--white); border: 1px solid var(--border); padding: 0.32rem 0.8rem; border-radius: 6px; transition: border-color .15s; }
+.chip:hover { border-color: var(--border2); }
+
+/* EXPERIENCE */
+.t-item { display: grid; grid-template-columns: 155px 1fr; gap: 2.5rem; padding: 2.2rem 0; border-bottom: 1px solid var(--border); }
+.t-item:last-child { border-bottom: none; }
+.t-date { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+.t-co { font-size: 0.72rem; color: var(--muted); margin-top: 0.25rem; }
+.t-role { font-family: var(--font-d); font-size: 1rem; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; margin-bottom: 0.75rem; }
+.t-pts { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+.t-pts li { font-size: 0.84rem; color: var(--muted); line-height: 1.6; padding-left: 1.1rem; position: relative; }
+.t-pts li::before { content:'–'; position: absolute; left: 0; color: var(--border2); }
+
+/* CONTACT */
+.c-box { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 3rem; max-width: 580px; }
+.c-box p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; margin-bottom: 2rem; }
+.c-rows { display: flex; flex-direction: column; gap: 0.65rem; }
+.c-row { display: flex; align-items: center; gap: 1rem; padding: 0.85rem 1.2rem; border: 1px solid var(--border); border-radius: 8px; text-decoration: none; color: var(--ink); background: var(--bg); transition: border-color .15s, background .15s; }
+.c-row:hover { border-color: var(--border2); background: var(--tag-bg); }
+.c-ico { width: 32px; height: 32px; border-radius: 7px; background: var(--tag-bg); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+.c-lbl { font-size: 0.69rem; color: var(--muted); }
+.c-val { font-size: 0.87rem; font-weight: 500; }
+
+/* FOOTER */
+footer { border-top: 1px solid var(--border); padding: 1.8rem 2.5rem; display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; color: var(--muted); background: var(--white); }
+footer a { color: var(--muted); text-decoration: none; }
+footer a:hover { color: var(--ink); }
+
+/* FADE */
+.fade { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.fade.on { opacity: 1; transform: none; }
+
+@media (max-width: 760px) {
+  nav { padding: 0 1.2rem; }
+  .nav-links { display: none; }
+  .hero, .container { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .hero { padding-top: 7.5rem; padding-bottom: 3.5rem; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .svc-grid, .proj-grid, .sk-grid { grid-template-columns: 1fr; }
+  .t-item { grid-template-columns: 1fr; gap: 0.4rem; }
+  footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Miracle Chukwuma</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:nwadiaromiracle@yahoo.com">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero fade">
+  <div class="eyebrow">Available for new projects</div>
+  <h1>Mobile Apps That Ship &amp; Scale.</h1>
+  <p class="hero-p">I'm Miracle Chukwuma, a mobile &amp; web developer based in Uyo, Nigeria. I build clean, production-ready apps — from fintech platforms to EdTech products — that real users love.</p>
+  <div class="hero-btns">
+    <a href="#projects" class="btn-solid">View My Work</a>
+    <a href="mailto:nwadiaromiracle@yahoo.com" class="btn-ghost">Get in Touch</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="s-val">4+</div><div class="s-lbl">Live apps on Play Store</div></div>
+    <div><div class="s-val">3+</div><div class="s-lbl">Years of experience</div></div>
+    <div><div class="s-val">30%</div><div class="s-lbl">User adoption increase</div></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="sec">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="sec-lbl">What I Do</div>
+      <h2 class="sec-h">Full-Cycle Mobile Development</h2>
+      <p class="sec-p">From concept to launch — I handle everything your mobile product needs to succeed.</p>
+    </div>
+    <div class="svc-grid fade">
+      <div class="svc"><div class="svc-n">01</div><h3>React Native Development</h3><p>Cross-platform apps for iOS and Android from one codebase. Native-feel performance with NativeWind and TypeScript.</p></div>
+      <div class="svc"><div class="svc-n">02</div><h3>Web Application Development</h3><p>Modern, responsive apps with React and Next.js. Clean architecture, fast load times, and great UX.</p></div>
+      <div class="svc"><div class="svc-n">03</div><h3>API &amp; Fintech Integration</h3><p>Secure integration of financial APIs, payment gateways, and third-party data services into your product.</p></div>
+      <div class="svc"><div class="svc-n">04</div><h3>Testing &amp; Code Quality</h3><p>Unit tests, authentication checks, and QA to keep your codebase reliable and your users protected.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="sec">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="sec-lbl">How I Work</div>
+      <h2 class="sec-h">My Process</h2>
+      <p class="sec-p">A clear, collaborative approach so you always know what's happening and why.</p>
+    </div>
+    <div class="proc-list">
+      <div class="proc fade"><div class="proc-n">01</div><div class="proc-body"><h3>Discovery</h3><p>I take time to understand your users, goals, and constraints before writing a single line of code.</p></div><div class="proc-arr">→</div></div>
+      <div class="proc fade"><div class="proc-n">02</div><div class="proc-body"><h3>Design &amp; Architecture</h3><p>Choosing the right stack, mapping out the UI/UX flow, and designing a scalable foundation.</p></div><div class="proc-arr">→</div></div>
+      <div class="proc fade"><div class="proc-n">03</div><div class="proc-body"><h3>Development</h3><p>Iterative builds with regular check-ins. You see real progress at every milestone — no black boxes.</p></div><div class="proc-arr">→</div></div>
+      <div class="proc fade"><div class="proc-n">04</div><div class="proc-body"><h3>Testing &amp; Deployment</h3><p>Comprehensive QA, unit tests, and smooth delivery to the Play Store, App Store, or your servers.</p></div><div class="proc-arr">→</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="sec">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="sec-lbl">Work</div>
+      <h2 class="sec-h">Live Projects</h2>
+      <p class="sec-p">Real apps, shipped to real users — live on the Google Play Store.</p>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card fade">
+        <div class="proj-top"><div class="proj-ico">🎓</div><div class="proj-badge">EdTech · Social</div></div>
+        <div class="proj-body">
+          <h3>EDU Hub</h3>
+          <p>A social platform connecting students with peers and educators — with community tools, course access, and engagement features to drive learning.</p>
+          <div class="proj-tags"><span class="ptag">React Native</span><span class="ptag">EdTech</span><span class="ptag">Social</span></div>
+        </div>
+        <div class="proj-foot"><a class="proj-a" href="https://play.google.com/store/apps/details?id=mytsi.eduhub" target="_blank">View on Play Store ↗</a></div>
+      </div>
+      <div class="proj-card fade">
+        <div class="proj-top"><div class="proj-ico">🏫</div><div class="proj-badge">Education · Multi-Role</div></div>
+        <div class="proj-body">
+          <h3>SBS Hub</h3>
+          <p>A stakeholder management app for Step by Step schools — one platform for admins, teachers, parents, and students.</p>
+          <div class="proj-tags"><span class="ptag">React Native</span><span class="ptag">Education</span><span class="ptag">Multi-Role</span></div>
+        </div>
+        <div class="proj-foot"><a class="proj-a" href="https://play.google.com/store/apps/details?id=com.stepbystep.sbshub.android" target="_blank">View on Play Store ↗</a></div>
+      </div>
+      <div class="proj-card fade">
+        <div class="proj-top"><div class="proj-ico">📲</div><div class="proj-badge">Education · Mobile</div></div>
+        <div class="proj-body">
+          <h3>SBS Mobile</h3>
+          <p>The companion mobile app to the SBS school platform — streamlined access to operations and real-time notifications.</p>
+          <div class="proj-tags"><span class="ptag">React Native</span><span class="ptag">Push Notifications</span><span class="ptag">School</span></div>
+        </div>
+        <div class="proj-foot"><a class="proj-a" href="https://play.google.com/store/apps/details?id=com.mirack.SBSMobile" target="_blank">View on Play Store ↗</a></div>
+      </div>
+      <div class="proj-card fade">
+        <div class="proj-top"><div class="proj-ico">📚</div><div class="proj-badge">EdTech · Offline</div></div>
+        <div class="proj-body">
+          <h3>JAMB CBT App</h3>
+          <p>Offline JAMB exam prep for Nigerian students. Practice past questions and simulate real CBT conditions — no internet needed.</p>
+          <div class="proj-tags"><span class="ptag">React Native</span><span class="ptag">Offline First</span><span class="ptag">Exam Prep</span></div>
+        </div>
+        <div class="proj-foot"><a class="proj-a" href="https://play.google.com/store/apps/details?id=com.jambcbt.jambcbtappoffline" target="_blank">View on Play Store ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="sec-lbl">Technical Skills</div>
+      <h2 class="sec-h">Tools &amp; Expertise</h2>
+    </div>
+    <div class="sk-grid fade">
+      <div class="sk-col">
+        <h3>Core Stack</h3>
+        <div class="sk-row"><span class="sk-name">React Native / NativeWind</span><span class="sk-lvl">Expert</span></div>
+        <div class="sk-row"><span class="sk-name">JavaScript / TypeScript</span><span class="sk-lvl">Expert</span></div>
+        <div class="sk-row"><span class="sk-name">React / Next.js</span><span class="sk-lvl">Advanced</span></div>
+        <div class="sk-row"><span class="sk-name">Node.js / Nest.js</span><span class="sk-lvl">Advanced</span></div>
+        <div class="sk-row"><span class="sk-name">Python / Django</span><span class="sk-lvl">Proficient</span></div>
+        <div class="sk-row"><span class="sk-name">MongoDB / MySQL</span><span class="sk-lvl">Proficient</span></div>
+        <div class="sk-row"><span class="sk-name">PHP / Laravel</span><span class="sk-lvl">Proficient</span></div>
+        <div class="sk-row"><span class="sk-name">Ruby on Rails</span><span class="sk-lvl">Familiar</span></div>
+      </div>
+      <div class="sk-col">
+        <h3>Tools &amp; Other</h3>
+        <div class="chips" style="margin-bottom:2rem">
+          <span class="chip">Git / GitHub</span><span class="chip">Jira</span><span class="chip">Trello</span>
+          <span class="chip">Tailwind CSS</span><span class="chip">HTML / CSS</span>
+          <span class="chip">API Integration</span><span class="chip">Push Notifications</span>
+          <span class="chip">Unit Testing</span><span class="chip">OOP</span><span class="chip">Fintech APIs</span>
+        </div>
+        <h3>Soft Skills</h3>
+        <div class="chips">
+          <span class="chip">Leadership</span><span class="chip">Communication</span>
+          <span class="chip">Time Management</span><span class="chip">Negotiation</span><span class="chip">Budgeting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="sec-lbl">Background</div>
+      <h2 class="sec-h">Experience</h2>
+    </div>
+    <div>
+      <div class="t-item fade">
+        <div><div class="t-date">Jun 2023 – Present</div><div class="t-co">Fintech · Remote</div></div>
+        <div>
+          <div class="t-role">Mobile Application Developer</div>
+          <ul class="t-pts">
+            <li>Built UIs for accounts, transactions, financial tools and investment features</li>
+            <li>Integrated financial institution APIs for secure account access and payments</li>
+            <li>Implemented push notifications for account activity and investment alerts</li>
+            <li>Increased user adoption by 30% through improved UX and interface design</li>
+            <li>Wrote unit tests ensuring code quality and reliability</li>
+          </ul>
+        </div>
+      </div>
+      <div class="t-item fade">
+        <div><div class="t-date">Sep 2022 – Sep 2023</div><div class="t-co">DevCareer · Remote</div></div>
+        <div>
+          <div class="t-role">Frontend Developer</div>
+          <ul class="t-pts">
+            <li>Built web and mobile app for cohort recruitment and programmer assessment</li>
+            <li>Developed scoring algorithms and automatic submission feature</li>
+            <li>Built user traffic monitoring for site administrators</li>
+            <li>Wrote authentication tests to secure dashboard access</li>
+          </ul>
+        </div>
+      </div>
+      <div class="t-item fade">
+        <div><div class="t-date">Haven IQ · Remote</div></div>
+        <div>
+          <div class="t-role">React Native Developer</div>
+          <ul class="t-pts"><li>Cross-platform mobile app development for iOS and Android</li></ul>
+        </div>
+      </div>
+      <div class="t-item fade">
+        <div><div class="t-date">May 2020 – Aug 2020</div><div class="t-co">Distrobird · Remote</div></div>
+        <div>
+          <div class="t-role">Web Developer Intern</div>
+          <ul class="t-pts">
+            <li>Contributed to payment application from development to live deployment</li>
+            <li>Worked with Ruby on Rails, Node.js, and React</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="container">
+    <div class="sec-head fade">
+      <div class="sec-lbl">Let's Talk</div>
+      <h2 class="sec-h">Get In Touch</h2>
+    </div>
+    <div class="c-box fade">
+      <p>Open to freelance projects, full-time roles, and collaborations. If you have an app idea or need a mobile developer on your team, reach out.</p>
+      <div class="c-rows">
+        <a href="mailto:nwadiaromiracle@yahoo.com" class="c-row">
+          <div class="c-ico">✉</div><div><div class="c-lbl">Email</div><div class="c-val">nwadiaromiracle@yahoo.com</div></div>
+        </a>
+        <a href="https://github.com/miracle73" target="_blank" class="c-row">
+          <div class="c-ico">⌥</div><div><div class="c-lbl">GitHub</div><div class="c-val">github.com/miracle73</div></div>
+        </a>
+        <div class="c-row">
+          <div class="c-ico">◎</div><div><div class="c-lbl">Location</div><div class="c-val">Uyo, Nigeria · Open to Remote</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Nwadiaro Miracle Chukwuma</span>
+  <span>Uyo, Nigeria · <a href="https://github.com/miracle73">GitHub</a></span>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
